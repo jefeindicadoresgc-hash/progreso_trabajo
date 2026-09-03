@@ -1,0 +1,193 @@
+/* VARIABLES Y FONDO TOKYO */
+:root {
+    --tokyo-dark: #0b0c10; --neon-pink: #ff007f;
+    --neon-cyan: #00e5ff; --neon-lime: #39ff14;
+    --neon-orange: #ff4500; --neon-red: #ff0000;
+}
+
+body {
+    background-color: var(--tokyo-dark);
+    background-image: linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px; color: #fff;
+    font-family: 'Teko', sans-serif; margin: 0; padding: 20px;
+}
+
+/* LOGIN SCREEN */
+.login-screen {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+    display: flex; align-items: center; justify-content: center; z-index: 10000;
+}
+.login-box { width: 350px; background: #111; }
+
+/* CABECERA Y CAJAS NEÓN */
+.tokyo-header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 2px solid var(--neon-pink); padding-bottom: 10px; margin-bottom: 20px;
+}
+.tokyo-header h1 {
+    font-family: 'Racing Sans One', cursive; font-size: 3.5rem; margin: 0;
+    text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px var(--neon-cyan);
+}
+.tokyo-header h1 span { color: var(--neon-pink); text-shadow: 0 0 15px var(--neon-pink); }
+.kanji { font-family: sans-serif; color: var(--neon-lime); letter-spacing: 5px; margin: 0; font-size: 1.2rem;}
+
+.dashboard { display: flex; flex-direction: column; gap: 30px; }
+.neon-box { background: rgba(10, 10, 10, 0.8); border: 2px solid; border-radius: 10px; padding: 20px; }
+.pink-glow { border-color: var(--neon-pink); box-shadow: 0 0 20px rgba(255, 0, 127, 0.2); }
+.cyan-glow { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 229, 255, 0.2); }
+.section-title { font-family: 'Racing Sans One', cursive; font-size: 2rem; margin-top:0; letter-spacing: 1px;}
+
+/* TARJETAS DE VEHÍCULOS */
+.car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+
+.car-card {
+    background: linear-gradient(135deg, #1f1f1f 0%, #111 100%);
+    border-left: 5px solid var(--neon-orange); padding: 15px; border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.8); position: relative; overflow: hidden;
+}
+.car-header { display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 10px; }
+.placa { font-family: 'Racing Sans One', cursive; color: var(--neon-lime); font-size: 1.5rem; letter-spacing: 2px;}
+.modelo { font-size: 1.5rem; font-weight: bold; color: #fff;}
+.info { font-size: 1.2rem; color: #aaa; margin: 3px 0;}
+
+/* Formularios y Botones de Taller */
+.assign-box { margin-top: 15px; border-top: 1px dashed #555; padding-top: 15px; display: flex; flex-direction: column; gap: 8px;}
+.assign-input, .assign-select {
+    background: #000; color: #fff; border: 1px solid #555; padding: 8px; font-family: 'Teko', sans-serif; font-size: 1.1rem; width: 100%; box-sizing: border-box;
+}
+.assign-input:focus, .assign-select:focus { border-color: var(--neon-pink); outline:none;}
+
+.btn-nitro {
+    background: var(--neon-pink); color: #fff; font-family: 'Racing Sans One', cursive;
+    border: none; padding: 10px; font-size: 1.2rem; cursor: pointer; text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.5); transition: 0.2s;
+}
+.btn-nitro:hover { background: #fff; color: var(--neon-pink); }
+.btn-tech { background: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 229, 255, 0.5); }
+.btn-tech:hover { background: #fff; color: var(--neon-cyan); }
+.btn-danger { background: var(--neon-red); box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
+.btn-danger:hover { background: #fff; color: var(--neon-red); }
+.btn-warning { background: var(--neon-orange); box-shadow: 0 0 15px rgba(255, 69, 0, 0.5); }
+.btn-warning:hover { background: #fff; color: var(--neon-orange); }
+
+.tech-badge { position: absolute; top: 10px; right: -30px; background: var(--neon-cyan); color: #000; font-family: 'Racing Sans One'; padding: 5px 35px; transform: rotate(45deg); box-shadow: 0 0 10px var(--neon-cyan);}
+
+/* Detalle visual para información del auto */
+.info-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5px;
+    background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; margin-top: 10px;
+}
+.info-label { color: #888; font-size: 0.9rem; margin: 0; }
+.info-data { color: #fff; font-size: 1.1rem; margin: 0; font-family: sans-serif;}
+.info-full { grid-column: span 2; border-top: 1px solid #333; padding-top: 5px; margin-top: 5px; }
+
+/* DISEÑO RESPONSIVE Y MOBILE */
+@media (max-width: 800px) {
+    .tokyo-header { flex-direction: column; text-align: center; gap: 15px; }
+    .tokyo-header h1 { font-size: 2.8rem; }
+    #displayUser { font-size: 1.5rem !important; }
+    
+    .car-grid { grid-template-columns: 1fr; } 
+    .car-card { padding: 20px; } 
+    
+    .btn-nitro { padding: 15px; font-size: 1.4rem; } 
+    .assign-input, .assign-select { padding: 12px; font-size: 1.2rem; }
+    
+    .tech-badge { right: -40px; padding: 5px 45px; font-size: 1.1rem; }
+}
+
+/* MODO COMPACTO PARA TRABAJOS TERMINADOS */
+#grid-terminados {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+#grid-terminados .car-card {
+    padding: 10px;
+}
+#grid-terminados .car-header {
+    margin-bottom: 5px; padding-bottom: 5px;
+}
+#grid-terminados .modelo {
+    font-size: 1.2rem;
+}
+#grid-terminados .placa {
+    font-size: 1.2rem;
+}
+#grid-terminados .info-data {
+    font-size: 0.9rem;
+}
+#grid-terminados .tech-badge {
+    font-size: 0.8rem; padding: 2px 25px; top: 8px; right: -25px;
+}
+#grid-terminados .info-grid {
+    gap: 2px; padding: 5px; margin-top: 5px;
+}
+#grid-terminados .btn-nitro {
+    padding: 5px; font-size: 0.9rem; margin-top: 5px !important;
+}
+
+/* [SECCIÓN 6: TABLA KPI COMPACTA] */
+.kpi-table { width: 100%; border-collapse: collapse; }
+.kpi-table th { 
+    background: #111; color: var(--neon-lime); padding: 12px; 
+    border-bottom: 2px solid var(--neon-lime); text-align: left; 
+    font-family: 'Racing Sans One', cursive; font-size: 1.2rem; letter-spacing: 1px;
+}
+.kpi-table td { 
+    background: rgba(0,0,0,0.4); color: #fff; padding: 10px; 
+    border-bottom: 1px solid #333; font-size: 1.1rem; vertical-align: middle;
+}
+.kpi-table tr:hover td { background: rgba(57, 255, 20, 0.05); }
+
+/* [SECCIÓN 7: CHECKBOXES MAGICOS (Uiverse.io by adarshpatel111)] */
+.magic-checkbox-group {
+    display: grid; gap: 15px; padding: 15px;
+    background: radial-gradient(circle, #1a1a2e 0%, #16213e 100%);
+    border-radius: 10px; border: 1px solid #333;
+}
+.magic-check {
+    display: flex; align-items: center; gap: 15px; cursor: pointer;
+    position: relative; padding-left: 55px; margin: 0;
+}
+.magic-check input { position: absolute; opacity: 0; }
+.liquid-box {
+    position: absolute; left: 0; width: 35px; height: 35px; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2); overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+.liquid-fill {
+    position: absolute; bottom: -100%; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(45deg, #00dbde, #fc00ff);
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+.sparkle {
+    position: absolute; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    opacity: 0; transform: scale(0); transition: all 0.4s;
+}
+.magic-label {
+    color: white; font-family: "Teko", sans-serif; font-size: 1.3rem;
+    font-weight: 500; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: all 0.4s; letter-spacing: 0.5px;
+}
+
+.magic-check:nth-child(2) .liquid-fill { background: linear-gradient(45deg, #f6d365, #fda085); }
+.magic-check:nth-child(3) .liquid-fill { background: linear-gradient(45deg, #84fab0, #8fd3f4); }
+
+.magic-check input:checked ~ .liquid-box { transform: rotate(8deg); box-shadow: 0 0 15px rgba(0, 219, 222, 0.5); }
+.magic-check:nth-child(2) input:checked ~ .liquid-box { box-shadow: 0 0 15px rgba(246, 211, 101, 0.5); }
+.magic-check:nth-child(3) input:checked ~ .liquid-box { box-shadow: 0 0 15px rgba(132, 250, 176, 0.5); }
+
+.magic-check input:checked ~ .liquid-box .liquid-fill { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); bottom: 0; }
+.magic-check input:checked ~ .liquid-box .sparkle { opacity: 1; transform: scale(1); transition-delay: 0.3s; animation: sparkle-pulse 1.5s infinite; }
+.magic-check input:checked ~ .magic-label { transform: translateX(5px); text-shadow: 0 0 15px currentColor; color: var(--neon-cyan); }
+.magic-check:hover .liquid-box { transform: scale(1.05); }
+
+@keyframes sparkle-pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
