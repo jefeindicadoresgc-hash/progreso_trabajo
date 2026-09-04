@@ -1,4 +1,3 @@
-// [SECCIÓN 1: FIREBASE Y CONFIGURACIÓN]
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 import { getDatabase, ref, onValue, update, get, set } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
@@ -24,8 +23,7 @@ onValue(ref(db, 'config_taller/adicionales'), (snapshot) => {
     listaAdicionales = snapshot.val() || ["Kit de Afinación", "Balatas Delanteras", "Balatas Traseras"];
 });
 
-
-// [SECCIÓN 2: LÓGICA DE LOGIN Y ADMIN]
+// LÓGICA DE LOGIN Y ADMIN
 document.getElementById('btnEntrar').addEventListener('click', () => {
     let user = document.getElementById('loginUser').value;
     let pin = document.getElementById('loginPin').value;
@@ -78,8 +76,7 @@ document.getElementById('btnDelAdicional').addEventListener('click', () => {
     }
 });
 
-
-// [SECCIÓN 3: RENDERIZADO DEL DASHBOARD (TARJETAS Y TABLA KPI)]
+// RENDERIZADO DEL DASHBOARD Y TABLA KPI
 function renderizarTaller(datos) {
     const gridEspera = document.getElementById('grid-espera');
     const gridBahias = document.getElementById('grid-bahias');
@@ -92,7 +89,6 @@ function renderizarTaller(datos) {
     citasArray.forEach(cita => {
         if (cita.asistio !== 'Sí' || cita.oculto) return;
 
-        // Construcción de Adicionales HTML para vista
         let adicTexto = '';
         if(cita.adicionales) {
             let tags = [];
@@ -129,10 +125,10 @@ function renderizarTaller(datos) {
                 `;
                 tbodyTerminados.appendChild(tr);
             }
-            return; // Termina el proceso para esta cita, no dibuja tarjeta
+            return;
         }
 
-        // SI NO ESTÁ TERMINADO -> Construye Tarjetas para PIT STOP o BAHÍAS
+        // SI NO ESTÁ TERMINADO -> PIT STOP O BAHÍAS
         let bloqueInfoCompleta = `
             <div class="info-grid">
                 <div><p class="info-label">Fecha / Hora</p><p class="info-data">${cita.Fecha} | ${cita.Hora}</p></div>
@@ -144,10 +140,9 @@ function renderizarTaller(datos) {
             </div>
         `;
 
-        // ESTADO 1: PIT STOP (Jefe de Taller asigna)
+        // PIT STOP
         if (!cita.tecnico || cita.tecnico === "") {
             if(currentUserRole === 'jefe') {
-                // Generar HTML de Checkboxes Mágicos dinámicamente
                 let magicBoxesHTML = listaAdicionales.map(item => `
                     <label class="magic-check">
                         <input type="checkbox" class="chk-adi-${cita.Folio}" value="${item}">
@@ -197,7 +192,7 @@ function renderizarTaller(datos) {
                 gridEspera.appendChild(card);
             }
         } 
-        // ESTADO 2: BAHÍAS (Técnicos Trabajando)
+        // BAHÍAS
         else {
             if(currentUserRole === 'jefe' || currentUserRole === cita.tecnico || isSuperAdmin) {
                 let badgeColor = isConfirmado ? 'background:var(--neon-orange);' : 'background:var(--neon-cyan);';
@@ -239,7 +234,7 @@ function renderizarTaller(datos) {
     });
 }
 
-// Lógica del Buscador en Tabla KPI
+// BUSCADOR EN TABLA KPI
 document.getElementById('kpiSearch').addEventListener('keyup', function() {
     let filter = this.value.toLowerCase();
     let rows = document.querySelectorAll('#tbody-terminados tr');
@@ -249,15 +244,13 @@ document.getElementById('kpiSearch').addEventListener('keyup', function() {
     });
 });
 
-
-// [SECCIÓN 4: FUNCIONES DE ACTUALIZACIÓN]
+// FUNCIONES DE ACTUALIZACIÓN (ONCLICK)
 window.asignarTrabajo = function(folio) {
     let cat = document.getElementById(`cat-${folio}`).value;
     let tech = document.getElementById(`tech-${folio}`).value;
     let extra = document.getElementById(`extra-${folio}`).value;
     let diagAdi = document.getElementById(`diag-adi-${folio}`).value;
 
-    // Leer checkboxes mágicos seleccionados
     let checkboxes = document.querySelectorAll(`.chk-adi-${folio}:checked`);
     let seleccionados = Array.from(checkboxes).map(chk => chk.value);
 

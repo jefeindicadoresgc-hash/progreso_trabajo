@@ -87,47 +87,14 @@ body {
     .tokyo-header { flex-direction: column; text-align: center; gap: 15px; }
     .tokyo-header h1 { font-size: 2.8rem; }
     #displayUser { font-size: 1.5rem !important; }
-    
     .car-grid { grid-template-columns: 1fr; } 
     .car-card { padding: 20px; } 
-    
     .btn-nitro { padding: 15px; font-size: 1.4rem; } 
     .assign-input, .assign-select { padding: 12px; font-size: 1.2rem; }
-    
     .tech-badge { right: -40px; padding: 5px 45px; font-size: 1.1rem; }
 }
 
-/* MODO COMPACTO PARA TRABAJOS TERMINADOS */
-#grid-terminados {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-}
-#grid-terminados .car-card {
-    padding: 10px;
-}
-#grid-terminados .car-header {
-    margin-bottom: 5px; padding-bottom: 5px;
-}
-#grid-terminados .modelo {
-    font-size: 1.2rem;
-}
-#grid-terminados .placa {
-    font-size: 1.2rem;
-}
-#grid-terminados .info-data {
-    font-size: 0.9rem;
-}
-#grid-terminados .tech-badge {
-    font-size: 0.8rem; padding: 2px 25px; top: 8px; right: -25px;
-}
-#grid-terminados .info-grid {
-    gap: 2px; padding: 5px; margin-top: 5px;
-}
-#grid-terminados .btn-nitro {
-    padding: 5px; font-size: 0.9rem; margin-top: 5px !important;
-}
-
-/* [SECCIÓN 6: TABLA KPI COMPACTA] */
+/* TABLA KPI COMPACTA */
 .kpi-table { width: 100%; border-collapse: collapse; }
 .kpi-table th { 
     background: #111; color: var(--neon-lime); padding: 12px; 
@@ -140,7 +107,7 @@ body {
 }
 .kpi-table tr:hover td { background: rgba(57, 255, 20, 0.05); }
 
-/* [SECCIÓN 7: CHECKBOXES MAGICOS (Uiverse.io by adarshpatel111)] */
+/* CHECKBOXES MAGICOS */
 .magic-checkbox-group {
     display: grid; gap: 15px; padding: 15px;
     background: radial-gradient(circle, #1a1a2e 0%, #16213e 100%);
@@ -176,11 +143,9 @@ body {
 
 .magic-check:nth-child(2) .liquid-fill { background: linear-gradient(45deg, #f6d365, #fda085); }
 .magic-check:nth-child(3) .liquid-fill { background: linear-gradient(45deg, #84fab0, #8fd3f4); }
-
 .magic-check input:checked ~ .liquid-box { transform: rotate(8deg); box-shadow: 0 0 15px rgba(0, 219, 222, 0.5); }
 .magic-check:nth-child(2) input:checked ~ .liquid-box { box-shadow: 0 0 15px rgba(246, 211, 101, 0.5); }
 .magic-check:nth-child(3) input:checked ~ .liquid-box { box-shadow: 0 0 15px rgba(132, 250, 176, 0.5); }
-
 .magic-check input:checked ~ .liquid-box .liquid-fill { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); bottom: 0; }
 .magic-check input:checked ~ .liquid-box .sparkle { opacity: 1; transform: scale(1); transition-delay: 0.3s; animation: sparkle-pulse 1.5s infinite; }
 .magic-check input:checked ~ .magic-label { transform: translateX(5px); text-shadow: 0 0 15px currentColor; color: var(--neon-cyan); }
