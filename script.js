@@ -34,7 +34,7 @@ document.getElementById('btnEntrar').addEventListener('click', () => {
         
         document.getElementById('loginOverlay').style.display = 'none';
         
-        let nombreDisplay = user === 'jefe' ? 'JEFE DE TALLER' : `🔧 TÉCNICO ${user.toUpperCase()}`;
+        let nombreDisplay = user === 'jefe' ? 'JEFE DE TALLER' : `TÉCNICO: ${user.toUpperCase()}`;
         if(isSuperAdmin) {
             nombreDisplay += " - MODO ADMIN";
             document.getElementById('adminControlsTaller').style.display = 'flex';
@@ -202,7 +202,7 @@ function renderizarTaller(datos) {
                 if(currentUserRole === cita.tecnico) {
                     if (!isConfirmado) {
                         actionBtns = `
-                            <div style="display:flex; gap:10px; margin-top:15px;">
+                            <div style="display:flex; gap:10px; margin-top:15px; flex-wrap: wrap;">
                                 <button class="btn-action btn-green" style="flex:1;" onclick="confirmarTrabajo('${cita.Folio}')">✔️ ACEPTAR</button>
                                 <button class="btn-action btn-red" style="flex:1;" onclick="rechazarTrabajo('${cita.Folio}')">❌ DEVOLVER</button>
                             </div>`;
