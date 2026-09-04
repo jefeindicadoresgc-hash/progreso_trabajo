@@ -2,69 +2,78 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Taller - Tokyo Drift</title>
-    <link rel="stylesheet" href="taller.css">
-    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Teko:wght@500;700&display=swap" rel="stylesheet">
+    <title>Centro de Servicio - Taller Hyundai</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuentes limpias y modernas -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- PANTALLA DE LOGIN -->
+    <!-- PANTALLA DE LOGIN (Estilo Pokédex) -->
     <div id="loginOverlay" class="login-screen">
-        <div class="login-box neon-box cyan-glow">
-            <h1 style="font-family: 'Racing Sans One'; color: var(--neon-cyan); text-align: center; margin-top:0;">ACCESO AL TALLER</h1>
-            <select id="loginUser" class="assign-select" style="margin-bottom: 15px;">
-                <option value="jefe">Jefe de Taller</option>
-                <option value="daniel">🔧 Técnico: Daniel</option>
-                <option value="jorge">🔧 Técnico: Jorge</option>
-                <option value="luis">🔧 Técnico: Luis</option>
-            </select>
-            <input type="password" id="loginPin" class="assign-input" placeholder="INGRESA TU PIN" style="margin-bottom: 20px; text-align:center; font-size: 1.5rem; letter-spacing: 5px;">
-            <button id="btnEntrar" class="btn-nitro" style="width: 100%;">ENTRAR A LA PISTA</button>
+        <div class="login-box">
+            <div class="login-header">
+                <div class="camera-lens"></div>
+                <div class="status-lights">
+                    <span class="light red"></span><span class="light yellow"></span><span class="light green"></span>
+                </div>
+            </div>
+            <div class="login-body">
+                <h2>IDENTIFICACIÓN</h2>
+                <select id="loginUser" class="assign-select">
+                    <option value="jefe">Profesor (Jefe de Taller)</option>
+                    <option value="daniel">Entrenador: Daniel</option>
+                    <option value="jorge">Entrenador: Jorge</option>
+                    <option value="luis">Entrenador: Luis</option>
+                </select>
+                <input type="password" id="loginPin" class="assign-input" placeholder="INGRESA TU PIN" style="margin-top: 15px; text-align:center; letter-spacing: 5px;">
+                <button id="btnEntrar" class="btn-action" style="width: 100%; margin-top: 20px;">ACCEDER AL CENTRO</button>
+            </div>
         </div>
     </div>
 
-    <!-- CABECERA DEL DASHBOARD Y CONTROLES ADMIN -->
-    <header class="tokyo-header">
+    <!-- CABECERA DEL DASHBOARD -->
+    <header class="main-header">
         <div class="logo-area">
-            <h1>TOKYO <span>DRIFT</span></h1>
-            <p class="kanji">ワークショップ - TALLER HYUNDAI</p>
+            <h1>CENTRO DE SERVICIO</h1>
+            <p>HYUNDAI COATZA</p>
         </div>
         
-        <div style="display: flex; align-items: center; gap: 15px;">
+        <div class="header-controls">
             <!-- Controles Exclusivos Admin 2099 -->
-            <div id="adminControlsTaller" style="display:none; gap: 10px; margin-right: 20px; border-right: 1px solid #555; padding-right: 20px;">
-                <button id="btnAddAdicional" class="btn-nitro" style="background:var(--neon-cyan); color:#000; padding: 5px 10px; font-size: 1rem;">+ ADICIONAL</button>
-                <button id="btnDelAdicional" class="btn-nitro" style="background:var(--neon-orange); padding: 5px 10px; font-size: 1rem;">- QUITAR ADICIONAL</button>
+            <div id="adminControlsTaller" class="admin-panel" style="display:none;">
+                <button id="btnAddAdicional" class="btn-action btn-blue">+ ADICIONAL</button>
+                <button id="btnDelAdicional" class="btn-action btn-orange">- QUITAR ADICIONAL</button>
             </div>
             
-            <span id="displayUser" style="font-size: 2rem; color: var(--neon-lime);"></span>
-            <button id="btnSalir" class="btn-nitro" style="background: var(--neon-pink); padding: 5px 15px;">SALIR</button>
+            <span id="displayUser" class="user-badge"></span>
+            <button id="btnSalir" class="btn-action btn-red">SALIR</button>
         </div>
     </header>
 
     <!-- ZONAS DE TRABAJO -->
     <div class="dashboard">
         <!-- ZONA 1: PIT STOP -->
-        <section id="zonaJefe" class="neon-box pink-glow" style="display:none;">
-            <h2 class="section-title">🏁 PIT STOP - AUTOS EN ESPERA</h2>
+        <section id="zonaJefe" class="zone-box" style="display:none;">
+            <h2 class="section-title text-red">📥 RECEPCIÓN - AUTOS EN ESPERA</h2>
             <div id="grid-espera" class="car-grid"></div>
         </section>
 
         <!-- ZONA 2: BAHÍAS -->
-        <section id="zonaBahias" class="neon-box cyan-glow" style="display:none;">
-            <h2 class="section-title">🚦 BAHÍAS - TRABAJO EN CURSO</h2>
+        <section id="zonaBahias" class="zone-box" style="display:none;">
+            <h2 class="section-title text-blue">⚙️ BAHÍAS DE CURACIÓN - TRABAJANDO</h2>
             <div id="grid-bahias" class="car-grid"></div>
         </section>
 
         <!-- ZONA 3: TRABAJOS REALIZADOS (KPI) -->
-        <section id="zonaTerminados" class="neon-box" style="border-color: var(--neon-lime); box-shadow: 0 0 20px rgba(57, 255, 20, 0.2); display:none;">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <h2 class="section-title" style="color: var(--neon-lime); margin:0;">🏆 TRABAJOS REALIZADOS - KPI</h2>
-                <input type="text" id="kpiSearch" placeholder="🔍 Buscar técnico, placa, folio..." class="assign-input" style="width: 300px; border-color:var(--neon-lime);">
+        <section id="zonaTerminados" class="zone-box kpi-box" style="display:none;">
+            <div class="kpi-header">
+                <h2 class="section-title text-green" style="margin:0;">🏆 HALL DE LA FAMA - KPI</h2>
+                <input type="text" id="kpiSearch" placeholder="🔍 Buscar técnico, placa, folio..." class="search-input">
             </div>
             
-            <div style="overflow-x: auto;">
-                <table class="kpi-table" style="width: 100%; margin-top: 15px;">
+            <div class="table-responsive">
+                <table class="kpi-table">
                     <thead>
                         <tr>
                             <th>Folio</th><th>Placas</th><th>Vehículo</th>
@@ -78,6 +87,6 @@
         </section>
     </div>
 
-    <script type="module" src="taller.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
