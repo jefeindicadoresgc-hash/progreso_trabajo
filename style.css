@@ -1,4 +1,4 @@
-/* PALETA DE COLORES AGRADABLE */
+/* PALETA DE COLORES */
 :root {
     --poke-red: #E3350D;
     --poke-blue: #31A7D6;
@@ -24,7 +24,7 @@ body {
     display: flex; align-items: center; justify-content: center; z-index: 10000;
 }
 .login-box {
-    width: 380px; background: var(--poke-red); border-radius: 15px;
+    width: 380px; max-width: 90%; background: var(--poke-red); border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3); overflow: hidden;
     border: 3px solid #b71c1c;
 }
@@ -128,7 +128,7 @@ body {
 .kpi-table td { padding: 15px; border-bottom: 1px solid #eee; font-size: 1rem; font-weight: 600; vertical-align: middle; }
 .kpi-table tr:hover td { background: #fafafa; }
 
-/* CHECKBOXES MAGICOS (Estilo Claro) */
+/* CHECKBOXES MAGICOS */
 .magic-checkbox-group {
     display: grid; gap: 15px; padding: 15px; background: #fff;
     border-radius: 10px; border: 2px solid #eee;
@@ -163,11 +163,28 @@ body {
 .magic-check input:checked ~ .magic-label { transform: translateX(5px); color: var(--poke-blue); }
 @keyframes sparkle-pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
 
-/* RESPONSIVE */
-@media (max-width: 800px) {
+/* =========================================
+   DISEÑO RESPONSIVE Y MOBILE (TABLETS Y CELULARES)
+   ========================================= */
+@media (max-width: 900px) {
     .main-header { flex-direction: column; text-align: center; gap: 15px; }
-    .header-controls { flex-direction: column; }
-    .admin-panel { border-right: none; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 10px; }
+    .header-controls { flex-direction: column; width: 100%; }
+    .admin-panel { border-right: none; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 10px; flex-wrap: wrap; justify-content: center; width: 100%; }
     .kpi-header { flex-direction: column; gap: 15px; }
     .search-input { width: 100%; }
+    
+    /* Adaptar botones para que sean más fáciles de presionar en pantallas táctiles */
+    .btn-action { padding: 15px 20px; font-size: 1.1rem; width: 100%; margin-top: 5px; }
+    
+    /* Acomodar cuadrículas a una sola columna en pantallas más chicas */
+    .car-grid { grid-template-columns: 1fr; }
+    
+    /* Convertir el grid de información a 1 sola columna para no encimar texto */
+    .info-grid { grid-template-columns: 1fr; }
+    .info-full { grid-column: span 1; }
+    
+    .tech-badge { top: -15px; right: -5px; padding: 8px 15px; font-size: 0.9rem; }
+    
+    body { padding: 10px; }
+    .zone-box { padding: 15px; }
 }
