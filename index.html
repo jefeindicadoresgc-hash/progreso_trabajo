@@ -2,14 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centro de Servicio - Taller Hyundai</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Fuentes limpias y modernas -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- PANTALLA DE LOGIN (Estilo Pokédex) -->
+    <!-- PANTALLA DE LOGIN -->
     <div id="loginOverlay" class="login-screen">
         <div class="login-box">
             <div class="login-header">
@@ -21,13 +21,13 @@
             <div class="login-body">
                 <h2>IDENTIFICACIÓN</h2>
                 <select id="loginUser" class="assign-select">
-                    <option value="jefe">Profesor (Jefe de Taller)</option>
-                    <option value="daniel">Entrenador: Daniel</option>
-                    <option value="jorge">Entrenador: Jorge</option>
-                    <option value="luis">Entrenador: Luis</option>
+                    <option value="jefe">Jefe de Taller</option>
+                    <option value="daniel">Daniel</option>
+                    <option value="jorge">Jorge</option>
+                    <option value="luis">Luis</option>
                 </select>
                 <input type="password" id="loginPin" class="assign-input" placeholder="INGRESA TU PIN" style="margin-top: 15px; text-align:center; letter-spacing: 5px;">
-                <button id="btnEntrar" class="btn-action" style="width: 100%; margin-top: 20px;">ACCEDER AL CENTRO</button>
+                <button id="btnEntrar" class="btn-action" style="width: 100%; margin-top: 20px;">ACCEDER AL TALLER</button>
             </div>
         </div>
     </div>
@@ -61,14 +61,14 @@
 
         <!-- ZONA 2: BAHÍAS -->
         <section id="zonaBahias" class="zone-box" style="display:none;">
-            <h2 class="section-title text-blue">⚙️ BAHÍAS DE CURACIÓN - TRABAJANDO</h2>
+            <h2 class="section-title text-blue">⚙️ TRABAJANDO</h2>
             <div id="grid-bahias" class="car-grid"></div>
         </section>
 
         <!-- ZONA 3: TRABAJOS REALIZADOS (KPI) -->
         <section id="zonaTerminados" class="zone-box kpi-box" style="display:none;">
             <div class="kpi-header">
-                <h2 class="section-title text-green" style="margin:0;">🏆 HALL DE LA FAMA - KPI</h2>
+                <h2 class="section-title text-green" style="margin:0;">🏆 KPI</h2>
                 <input type="text" id="kpiSearch" placeholder="🔍 Buscar técnico, placa, folio..." class="search-input">
             </div>
             
